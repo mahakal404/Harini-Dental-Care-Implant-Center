@@ -43,14 +43,13 @@ export default function Home() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    service: 'Dental Consultation',
     date: '',
     message: ''
   });
 
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hello Dr. Jinal, I would like to book an appointment.\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nDate: ${formData.date}\nMessage: ${formData.message}`;
+    const text = `Hello Dr. Jinal, I would like to book an appointment.\nName: ${formData.name}\nPhone: ${formData.phone}\nDate: ${formData.date}\nMessage: ${formData.message}`;
     const encodedMessage = encodeURIComponent(text);
     window.open(`https://wa.me/919879364544?text=${encodedMessage}`, '_blank');
   };
@@ -398,6 +397,24 @@ export default function Home() {
                 <div className="relative z-10">
                   <h3 className="text-3xl font-black mb-6">Book an Appointment</h3>
                   <p className="text-teal-50 text-lg mb-8 leading-relaxed">Skip the waiting room. Book your consultation instantly via WhatsApp.</p>
+                  
+                  <div className="bg-teal-700/50 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-teal-500/30">
+                    <ul className="space-y-4">
+                      <li className="flex items-start text-teal-50">
+                        <MapPin className="w-5 h-5 mr-3 text-teal-300 flex-shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">F-105, Center Point Complex, Station Road, Killa Pardi, Valsad</span>
+                      </li>
+                      <li className="flex items-center text-teal-50">
+                        <Phone className="w-5 h-5 mr-3 text-teal-300 flex-shrink-0" />
+                        <a href="tel:+919879364544" className="font-bold hover:text-white transition">+91 9879364544</a>
+                      </li>
+                      <li className="flex items-center text-teal-50">
+                        <Clock className="w-5 h-5 mr-3 text-teal-300 flex-shrink-0" />
+                        <span>Opens at 10:00 AM</span>
+                      </li>
+                    </ul>
+                  </div>
+
                   <ul className="space-y-5">
                     <li className="flex items-center space-x-4"><CheckCircle2 className="w-6 h-6 text-teal-300" /><span className="font-medium text-lg">Quick Confirmation</span></li>
                     <li className="flex items-center space-x-4"><CheckCircle2 className="w-6 h-6 text-teal-300" /><span className="font-medium text-lg">Flexible Timings</span></li>
@@ -415,21 +432,9 @@ export default function Home() {
                     <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number *</label>
                     <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="+91 9876543210" />
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-2">Service</label>
-                      <select value={formData.service} onChange={e => setFormData({...formData, service: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white">
-                        <option>Dental Consultation</option>
-                        <option>Dental Implants</option>
-                        <option>Root Canal</option>
-                        <option>Tooth Extraction</option>
-                        <option>Cosmetic Dentistry</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Date *</label>
-                      <input required type="date" value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" />
-                    </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Date *</label>
+                    <input required type="date" value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" />
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-2">Message (Optional)</label>
