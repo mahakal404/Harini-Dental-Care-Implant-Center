@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Phone, 
   MapPin, 
@@ -51,15 +52,17 @@ export default function Home() {
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 transition-all">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-3 group">
-            {/* Logo Placeholder */}
-            <div className="w-12 h-12 bg-teal-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-md group-hover:bg-teal-700 transition">
-              H
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-extrabold text-slate-800 leading-tight">Harini Dental Care</span>
-              <span className="text-[10px] sm:text-xs text-teal-600 font-bold uppercase tracking-widest">& Implant Center</span>
-            </div>
+          <Link href="/" className="flex items-center gap-3 group">
+            <Image 
+              src="/harini.webp" 
+              alt="Harini Dental Care Logo" 
+              width={48} 
+              height={48} 
+              className="w-12 h-12 object-contain group-hover:scale-105 transition-transform"
+            />
+            <span className="font-bold text-teal-700 text-sm md:text-lg">
+              Harini Dental Care & Implant Center
+            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -110,10 +113,12 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-teal-300 to-blue-300 rounded-full blur-3xl opacity-20 transform translate-x-10 translate-y-10"></div>
               {/* Hero Image Placeholder */}
               <div className="relative aspect-square lg:aspect-[4/3] bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white flex items-center justify-center bg-slate-100 group">
-                <div className="text-slate-400 flex flex-col items-center group-hover:scale-105 transition-transform duration-500">
-                  <span className="text-8xl mb-6">🦷</span>
-                  <span className="font-semibold text-xl text-slate-500">Happy Patient Image</span>
-                </div>
+                <Image 
+                  src="/harini2.webp"
+                  alt="Happy Patient at Harini Dental Care"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </div>
           </div>
@@ -125,10 +130,12 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center lg:space-x-20">
               <div className="lg:w-5/12 w-full max-w-md mx-auto mb-16 lg:mb-0 relative">
                 <div className="aspect-[3/4] bg-teal-50 rounded-[2.5rem] overflow-hidden shadow-xl border border-teal-100 flex items-center justify-center group relative z-10">
-                   <div className="text-slate-400 flex flex-col items-center p-8 text-center group-hover:scale-105 transition-transform duration-500">
-                    <Stethoscope className="w-20 h-20 mb-6 text-teal-300" />
-                    <span className="font-semibold text-lg text-slate-500">Dr. Jinal Lad</span>
-                  </div>
+                  <Image 
+                    src="/harini1.webp"
+                    alt="Dr. Jinal Lad"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
                 {/* Decorative blob behind */}
                 <div className="absolute -inset-4 bg-teal-600/5 rounded-[3rem] -z-0"></div>
