@@ -350,10 +350,15 @@ export default function Home() {
             {/* Map Placeholder */}
             <div className="lg:col-span-4">
               <h4 className="text-xl font-bold text-white mb-8 border-b border-slate-700 pb-4">Locate Us</h4>
-              <div className="w-full h-64 bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center overflow-hidden relative group hover:border-teal-500 transition-colors">
+              <a 
+                href="https://maps.app.goo.gl/QWChHsfqseBpfNfP6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full h-64 bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center overflow-hidden relative group hover:border-teal-500 transition-colors"
+              >
                 <MapPin className="w-12 h-12 text-slate-600 absolute z-0 group-hover:scale-125 group-hover:text-slate-500 transition-all duration-500" />
-                <div className="z-10 text-slate-400 font-bold mt-20 text-sm tracking-widest uppercase bg-slate-900/80 px-4 py-2 rounded-full">Google Maps Embed</div>
-              </div>
+                <div className="z-10 text-slate-400 font-bold mt-20 text-sm tracking-widest uppercase bg-slate-900/80 px-4 py-2 rounded-full">View on Google Maps</div>
+              </a>
             </div>
           </div>
           
