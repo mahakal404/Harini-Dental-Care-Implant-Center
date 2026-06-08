@@ -55,12 +55,13 @@ export default function Home() {
     name: '',
     phone: '',
     date: '',
+    time: '',
     message: ''
   });
 
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Hello Dr. Jinal, I would like to book an appointment.\nName: ${formData.name}\nPhone: ${formData.phone}\nDate: ${formData.date}\nMessage: ${formData.message}`;
+    const text = `*🗓️ New Appointment Request 🗓️*\n\n*👤 Patient Name:* ${formData.name}\n*📱 Phone Number:* ${formData.phone}\n*📅 Preferred Date:* ${formData.date}\n*⏰ Preferred Time:* ${formData.time}\n*📝 Issue/Message:* ${formData.message}`;
     const encodedMessage = encodeURIComponent(text);
     window.open(`https://wa.me/919879364544?text=${encodedMessage}`, '_blank');
   };
@@ -446,9 +447,16 @@ export default function Home() {
                     <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number *</label>
                     <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="+91 9876543210" />
                   </div>
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Date *</label>
-                    <input required type="date" value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Date *</label>
+                      <input required type="date" value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Time *</label>
+                      <input required type="time" value={formData.time} onChange={e => setFormData({...formData, time: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" />
+                      <p className="text-xs text-slate-500 mt-2 ml-1">Working Hours: 10:00 AM - 07:30 PM</p>
+                    </div>
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-slate-700 mb-2">Message (Optional)</label>
@@ -556,9 +564,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <a 
-        href="https://wa.me/919879364544" 
-        target="_blank" 
-        rel="noopener noreferrer"
+        href="#booking-form" 
         className="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 z-50 group flex items-center justify-center"
       >
         <span className="absolute w-full h-full rounded-full bg-[#25D366] opacity-50 animate-ping"></span>
