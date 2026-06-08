@@ -89,9 +89,9 @@ export default function Home() {
               alt="Harini Dental Care Logo" 
               width={48} 
               height={48} 
-              className="w-12 h-12 object-contain group-hover:scale-105 transition-transform"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain group-hover:scale-105 transition-transform"
             />
-            <span className="font-bold text-teal-700 text-sm md:text-lg">
+            <span className="text-lg md:text-xl font-bold text-teal-700 leading-tight">
               Harini Dental Care & Implant Center
             </span>
           </Link>
@@ -472,10 +472,8 @@ export default function Home() {
             
             {/* Contact Info */}
             <div className="lg:col-span-5">
-              <div className="flex items-center space-x-3 mb-8">
-                <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  H
-                </div>
+              <div className="flex items-center gap-3 mb-8">
+                <Image src="/harini.webp" alt="Harini Dental Care Logo" width={40} height={40} className="w-10 h-10 object-contain bg-white rounded-full p-1" />
                 <h3 className="text-3xl font-black text-white">Harini Dental Care</h3>
               </div>
               <ul className="space-y-6 text-lg">
@@ -540,9 +538,18 @@ export default function Home() {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-slate-800 text-center text-slate-500 flex flex-col md:flex-row justify-between items-center font-medium">
             <p>&copy; {new Date().getFullYear()} Harini Dental Care & Implant Center. All rights reserved.</p>
-            <p className="mt-4 md:mt-0 flex items-center bg-slate-800 px-4 py-2 rounded-full text-sm">
-              Crafted with <Heart className="w-4 h-4 text-red-500 mx-2 animate-pulse" /> for a brighter smile.
-            </p>
+            <div className="flex items-center text-slate-400 mt-4 md:mt-0">
+              <span className="hidden md:block mx-2 text-slate-500">•</span>
+              <p className="text-sm font-medium flex items-center gap-1.5">
+                Built by
+                <span className="relative group cursor-pointer ml-1">
+                  <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 tracking-wider transition-all duration-300 group-hover:from-blue-500 group-hover:to-indigo-500">
+                    R-Labs
+                  </span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </footer>
