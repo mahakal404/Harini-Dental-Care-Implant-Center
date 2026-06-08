@@ -527,15 +527,13 @@ export default function Home() {
             {/* Map */}
             <div className="lg:col-span-4">
               <h4 className="text-xl font-bold text-white mb-8 border-b border-slate-700 pb-4">Locate Us</h4>
-              <a 
-                href="https://maps.app.goo.gl/QWChHsfqseBpfNfP6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full h-64 bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center overflow-hidden relative group hover:border-teal-500 transition-colors block"
-              >
-                <MapPin className="w-12 h-12 text-slate-600 absolute z-0 group-hover:scale-125 group-hover:text-slate-500 transition-all duration-500" />
-                <div className="z-10 text-slate-400 font-bold mt-20 text-sm tracking-widest uppercase bg-slate-900/80 px-4 py-2 rounded-full absolute flex items-center justify-center">View on Google Maps</div>
-              </a>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29895.316180301244!2d72.92759788476566!3d20.509730012405317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0c51477cc9501%3A0x9d31e0744c86c5ea!2sHarini%20Dental%20Care%20%26%20Implant%20Center!5e0!3m2!1sen!2sin!4v1780898246817!5m2!1sen!2sin" 
+                className="w-full h-64 md:h-72 rounded-xl border-0 shadow-md" 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
           
