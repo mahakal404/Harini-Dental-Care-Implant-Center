@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -58,6 +58,36 @@ export default function Home() {
     time: '',
     message: ''
   });
+
+  useEffect(() => {
+    const now = new Date();
+    
+    // Format Date to YYYY-MM-DD
+    const yyyy = now.getFullYear();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    const formattedDate = `${yyyy}-${mm}-${dd}`;
+
+    // Round Time to next 30 mins
+    let minutes = now.getMinutes();
+    let hours = now.getHours();
+    
+    if (minutes > 0 && minutes <= 30) {
+      minutes = 30;
+    } else if (minutes > 30) {
+      minutes = 0;
+      hours += 1;
+      if (hours === 24) hours = 0;
+    }
+    
+    const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+
+    setFormData(prev => ({
+      ...prev,
+      date: formattedDate,
+      time: formattedTime
+    }));
+  }, []);
 
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
