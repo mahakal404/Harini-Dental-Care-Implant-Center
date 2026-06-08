@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -13,7 +15,11 @@ import {
   Sparkles,
   Heart,
   Accessibility,
-  Laptop
+  Laptop,
+  MessageCircle,
+  Calendar,
+  Star,
+  Quote
 } from 'lucide-react';
 
 const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
@@ -34,6 +40,21 @@ const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 );
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    service: 'Dental Consultation',
+    date: '',
+    message: ''
+  });
+
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = `Hello Dr. Jinal, I would like to book an appointment.\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nDate: ${formData.date}\nMessage: ${formData.message}`;
+    const encodedMessage = encodeURIComponent(text);
+    window.open(`https://wa.me/919879364544?text=${encodedMessage}`, '_blank');
+  };
+
   return (
     <div className="flex flex-col min-h-screen font-sans">
       {/* Top Bar */}
@@ -73,10 +94,15 @@ export default function Home() {
             <Link href="#contact" className="hover:text-teal-600 transition">Contact</Link>
           </nav>
 
-          <a href="tel:+919879364544" className="hidden md:flex items-center bg-teal-600 text-white px-6 py-3 rounded-full font-bold hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
-            <Phone className="w-4 h-4 mr-2" />
-            Call Now: 9879364544
-          </a>
+          <div className="hidden md:flex items-center space-x-3">
+            <a href="tel:+919879364544" className="flex items-center bg-teal-50 text-teal-700 border border-teal-100 px-5 py-2.5 rounded-full font-bold hover:bg-teal-100 transition-all duration-300">
+              <Phone className="w-4 h-4 mr-2" />
+              Call Now
+            </a>
+            <a href="#booking-form" className="flex items-center bg-teal-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
+              Book Appointment
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
           <button className="md:hidden text-slate-800 hover:text-teal-600 transition">
@@ -101,7 +127,7 @@ export default function Home() {
                 Experience world-class dental care with state-of-the-art technology in a warm, comfortable, and highly hygienic environment.
               </p>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#contact" className="bg-teal-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-teal-700 hover:shadow-xl hover:shadow-teal-600/20 transition-all duration-300 flex items-center justify-center transform hover:-translate-y-1">
+                <a href="#booking-form" className="bg-teal-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-teal-700 hover:shadow-xl hover:shadow-teal-600/20 transition-all duration-300 flex items-center justify-center transform hover:-translate-y-1">
                   Book an Appointment
                 </a>
                 <a href="#services" className="bg-white text-teal-700 border-2 border-teal-100 px-8 py-4 rounded-full font-bold text-lg hover:border-teal-600 hover:bg-teal-50 transition-all duration-300 flex items-center justify-center">
@@ -111,7 +137,7 @@ export default function Home() {
             </div>
             <div className="lg:w-1/2 w-full relative max-w-lg lg:max-w-none mx-auto">
               <div className="absolute inset-0 bg-gradient-to-tr from-teal-300 to-blue-300 rounded-full blur-3xl opacity-20 transform translate-x-10 translate-y-10"></div>
-              {/* Hero Image Placeholder */}
+              {/* Hero Image */}
               <div className="relative aspect-square lg:aspect-[4/3] bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white flex items-center justify-center bg-slate-100 group">
                 <Image 
                   src="/harini2.webp"
@@ -206,7 +232,6 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Service Cards */}
               {[
                 { title: 'Dental Consultation', icon: <Stethoscope className="w-8 h-8" />, desc: 'Comprehensive oral examinations to detect and prevent dental issues early for a lasting healthy smile.' },
                 { title: 'Dental Implants', icon: <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>, desc: 'Permanent, natural-looking replacements for missing teeth that restore both function and aesthetics.' },
@@ -222,7 +247,6 @@ export default function Home() {
                 </div>
               ))}
 
-              {/* Service Card 5 - Spans 2 columns on lg screens */}
               <div className="bg-gradient-to-br from-teal-600 to-blue-700 p-10 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group lg:col-span-2 text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 -mt-10 -mr-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
                   <Sparkles className="w-64 h-64" />
@@ -235,6 +259,30 @@ export default function Home() {
                   <p className="text-xl text-teal-50 leading-relaxed max-w-2xl">
                     Transform your confidence with our smile designing services, including teeth whitening, veneers, aligners, and comprehensive aesthetic improvements tailored perfectly to your facial structure.
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Before & After Section */}
+        <section className="py-24 lg:py-32 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-teal-600 font-bold uppercase tracking-widest text-sm mb-4">Real Results</h2>
+              <h3 className="text-4xl md:text-5xl font-black text-slate-900">Transforming Smiles</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+              <div className="bg-slate-50 rounded-3xl p-4 shadow-sm border border-slate-100 group">
+                <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
+                  <Image src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Teeth Whitening Before" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg">Before</div>
+                </div>
+              </div>
+              <div className="bg-teal-50 rounded-3xl p-4 shadow-sm border border-teal-100 group">
+                <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
+                  <Image src="https://images.unsplash.com/photo-1590623354394-04141d65ab40?w=800&q=80" alt="Teeth Whitening After" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute top-4 right-4 bg-teal-600/90 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg">After</div>
                 </div>
               </div>
             </div>
@@ -286,6 +334,113 @@ export default function Home() {
                 <span className="text-green-500 font-bold text-xl">✓</span>
               </div>
               <span className="text-slate-700 font-bold text-lg">Accepts Google Pay & Digital Payments</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Clinic Gallery */}
+        <section className="py-24 lg:py-32 bg-slate-900 text-white overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-teal-400 font-bold uppercase tracking-widest text-sm mb-4">State-of-the-Art Infrastructure</h2>
+              <h3 className="text-4xl md:text-5xl font-black mb-6">Our Clinic Gallery</h3>
+              <p className="text-xl text-slate-400">Experience dental care in a modern, hygienic, and relaxing environment.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="relative aspect-square md:aspect-auto md:h-80 rounded-3xl overflow-hidden group">
+                <Image src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Modern Clinic Interior" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
+              </div>
+              <div className="relative aspect-square md:aspect-auto md:h-80 rounded-3xl overflow-hidden group">
+                <Image src="https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=800&q=80" alt="Dental Chair" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
+              </div>
+              <div className="relative aspect-square md:aspect-auto md:h-80 rounded-3xl overflow-hidden group">
+                <Image src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Clean Hospital" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-24 lg:py-32 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-teal-600 font-bold uppercase tracking-widest text-sm mb-4">Patient Reviews</h2>
+              <h3 className="text-4xl md:text-5xl font-black text-slate-900">What Our Patients Say</h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[
+                { name: "Priya Sharma", text: "Dr. Jinal is amazing! I had a root canal done and it was completely painless. The clinic is exceptionally clean and uses modern tech." },
+                { name: "Rahul Patel", text: "Best cosmetic dentistry in Valsad. Got my smile makeover done here and my confidence is through the roof. Highly recommend Harini Dental Care." },
+                { name: "Sneha Desai", text: "Very empathetic care. I have dental anxiety, but the staff and doctor made me feel so comfortable. Smooth experience from start to finish." }
+              ].map((review, idx) => (
+                <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 relative group hover:-translate-y-2 transition-transform duration-300 hover:shadow-xl">
+                  <Quote className="w-12 h-12 text-teal-100 absolute top-6 right-6 opacity-50 group-hover:text-teal-200 transition-colors" />
+                  <div className="flex items-center space-x-1 mb-6 text-amber-400">
+                    <Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" /><Star className="fill-current w-5 h-5" />
+                  </div>
+                  <p className="text-slate-600 text-lg leading-relaxed mb-6 italic">"{review.text}"</p>
+                  <h4 className="font-bold text-slate-900">- {review.name}</h4>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Smart Appointment Form */}
+        <section id="booking-form" className="py-24 lg:py-32 bg-white relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-teal-50/50 via-white to-white pointer-events-none"></div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-5xl mx-auto bg-white rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden flex flex-col md:flex-row">
+              <div className="md:w-5/12 bg-teal-600 text-white p-10 lg:p-14 flex flex-col justify-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-10 -mr-10 opacity-10">
+                  <Calendar className="w-64 h-64" />
+                </div>
+                <div className="relative z-10">
+                  <h3 className="text-3xl font-black mb-6">Book an Appointment</h3>
+                  <p className="text-teal-50 text-lg mb-8 leading-relaxed">Skip the waiting room. Book your consultation instantly via WhatsApp.</p>
+                  <ul className="space-y-5">
+                    <li className="flex items-center space-x-4"><CheckCircle2 className="w-6 h-6 text-teal-300" /><span className="font-medium text-lg">Quick Confirmation</span></li>
+                    <li className="flex items-center space-x-4"><CheckCircle2 className="w-6 h-6 text-teal-300" /><span className="font-medium text-lg">Flexible Timings</span></li>
+                    <li className="flex items-center space-x-4"><CheckCircle2 className="w-6 h-6 text-teal-300" /><span className="font-medium text-lg">Direct Chat with Clinic</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div className="md:w-7/12 p-10 lg:p-14">
+                <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Full Name *</label>
+                    <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="John Doe" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number *</label>
+                    <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="+91 9876543210" />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-2">Service</label>
+                      <select value={formData.service} onChange={e => setFormData({...formData, service: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white">
+                        <option>Dental Consultation</option>
+                        <option>Dental Implants</option>
+                        <option>Root Canal</option>
+                        <option>Tooth Extraction</option>
+                        <option>Cosmetic Dentistry</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-slate-700 mb-2">Preferred Date *</label>
+                      <input required type="date" value={formData.date} onChange={e => setFormData({...formData, date: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-2">Message (Optional)</label>
+                    <textarea rows={3} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full px-5 py-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all bg-slate-50 focus:bg-white" placeholder="Tell us about your dental issue..."></textarea>
+                  </div>
+                  <button type="submit" className="w-full bg-slate-900 text-white font-bold text-lg py-4 rounded-xl hover:bg-teal-600 hover:shadow-lg hover:shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1 flex justify-center items-center mt-4">
+                    <MessageCircle className="w-6 h-6 mr-3" />
+                    Book via WhatsApp
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </section>
@@ -347,17 +502,17 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <div className="lg:col-span-4">
               <h4 className="text-xl font-bold text-white mb-8 border-b border-slate-700 pb-4">Locate Us</h4>
               <a 
                 href="https://maps.app.goo.gl/QWChHsfqseBpfNfP6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full h-64 bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center overflow-hidden relative group hover:border-teal-500 transition-colors"
+                className="w-full h-64 bg-slate-800 rounded-2xl border-2 border-slate-700 flex items-center justify-center overflow-hidden relative group hover:border-teal-500 transition-colors block"
               >
                 <MapPin className="w-12 h-12 text-slate-600 absolute z-0 group-hover:scale-125 group-hover:text-slate-500 transition-all duration-500" />
-                <div className="z-10 text-slate-400 font-bold mt-20 text-sm tracking-widest uppercase bg-slate-900/80 px-4 py-2 rounded-full">View on Google Maps</div>
+                <div className="z-10 text-slate-400 font-bold mt-20 text-sm tracking-widest uppercase bg-slate-900/80 px-4 py-2 rounded-full absolute flex items-center justify-center">View on Google Maps</div>
               </a>
             </div>
           </div>
@@ -371,6 +526,17 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Floating WhatsApp Button */}
+      <a 
+        href="https://wa.me/919879364544" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 z-50 group flex items-center justify-center"
+      >
+        <span className="absolute w-full h-full rounded-full bg-[#25D366] opacity-50 animate-ping"></span>
+        <MessageCircle className="w-8 h-8 relative z-10" />
+      </a>
     </div>
   );
 }
