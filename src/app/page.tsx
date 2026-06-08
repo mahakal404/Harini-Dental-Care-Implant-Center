@@ -194,31 +194,10 @@ export default function Home() {
         {/* About Section */}
         <section id="about" className="py-24 lg:py-32 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row items-center lg:space-x-20">
-              <div className="lg:w-5/12 w-full max-w-md mx-auto mb-16 lg:mb-0 relative">
-                <div className="aspect-[3/4] bg-teal-50 rounded-[2.5rem] overflow-hidden shadow-xl border border-teal-100 flex items-center justify-center group relative z-10">
-                  <Image 
-                    src="/harini1.webp"
-                    alt="Dr. Jinal Lad"
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                {/* Decorative blob behind */}
-                <div className="absolute -inset-4 bg-teal-600/5 rounded-[3rem] -z-0"></div>
-                
-                {/* Floating Badge */}
-                <div className="absolute -bottom-6 -right-6 lg:-right-10 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 flex items-center space-x-4 z-20">
-                  <div className="bg-teal-100 p-4 rounded-full text-teal-600">
-                    <Heart className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <div className="font-black text-2xl text-slate-800">10+ Years</div>
-                    <div className="text-sm text-slate-500 font-bold uppercase tracking-wider">Experience</div>
-                  </div>
-                </div>
-              </div>
-              <div className="lg:w-7/12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+              
+              {/* Doctor Info Side */}
+              <div className="flex flex-col">
                 <div className="flex items-center space-x-2 mb-4">
                   <div className="w-12 h-1 bg-teal-600 rounded-full"></div>
                   <h2 className="text-teal-600 font-bold uppercase tracking-widest text-sm">About The Doctor</h2>
@@ -227,34 +206,76 @@ export default function Home() {
                 <p className="text-2xl text-teal-700 font-semibold mb-8">
                   Dental Surgeon, Cosmetic Specialist & Smile Designer
                 </p>
-                <div className="space-y-5 text-lg text-slate-600 leading-relaxed mb-10">
-                  <p>
-                    With over a decade of dedicated clinical experience, Dr. Jinal Lad is committed to providing empathetic, patient-centric care. She believes that a healthy smile is the foundation of overall well-being.
-                  </p>
-                  <p>
-                    Harini Dental Care & Implant Center is proud to be a <strong className="text-slate-800 bg-teal-50 px-2 py-0.5 rounded">Women-owned business</strong>, creating a welcoming and nurturing environment for patients of all ages to receive painless, high-quality dental treatments.
-                  </p>
+                
+                <div className="flex flex-col sm:flex-row gap-8 mb-10">
+                  <div className="w-full sm:w-2/5 relative aspect-[3/4] bg-teal-50 rounded-[2rem] overflow-hidden shadow-xl border border-teal-100 flex-shrink-0 group">
+                    <Image 
+                      src="/harini1.webp"
+                      alt="Dr. Jinal Lad"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                  <div className="w-full sm:w-3/5 space-y-4 text-lg text-slate-600 leading-relaxed">
+                    <p>
+                      With over a decade of dedicated clinical experience, Dr. Jinal Lad is committed to providing empathetic, patient-centric care. She believes that a healthy smile is the foundation of overall well-being.
+                    </p>
+                    <p>
+                      Harini Dental Care & Implant Center is proud to be a <strong className="text-slate-800 bg-teal-50 px-2 py-0.5 rounded">Women-owned business</strong>, creating a welcoming and nurturing environment for patients of all ages to receive painless, high-quality dental treatments.
+                    </p>
+                  </div>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex items-center space-x-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-6 h-6 text-teal-500" />
+                    <CheckCircle2 className="w-5 h-5 text-teal-500" />
                     <span className="font-bold text-lg">Empathetic Care</span>
                   </div>
                   <div className="flex items-center space-x-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-6 h-6 text-teal-500" />
+                    <CheckCircle2 className="w-5 h-5 text-teal-500" />
                     <span className="font-bold text-lg">Cosmetic Expert</span>
                   </div>
                   <div className="flex items-center space-x-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-6 h-6 text-teal-500" />
+                    <CheckCircle2 className="w-5 h-5 text-teal-500" />
                     <span className="font-bold text-lg">Women-Owned</span>
                   </div>
                   <div className="flex items-center space-x-3 text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                    <CheckCircle2 className="w-6 h-6 text-teal-500" />
+                    <CheckCircle2 className="w-5 h-5 text-teal-500" />
                     <span className="font-bold text-lg">Smile Designer</span>
                   </div>
                 </div>
               </div>
+
+              {/* Clinic Interior Side */}
+              <div className="flex flex-col relative w-full h-full justify-center">
+                <div className="flex items-center space-x-2 mb-4">
+                  <div className="w-12 h-1 bg-teal-600 rounded-full"></div>
+                  <h2 className="text-teal-600 font-bold uppercase tracking-widest text-sm">Our Clinic</h2>
+                </div>
+                <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-6">A Welcoming Environment</h3>
+                <p className="text-lg text-slate-600 leading-relaxed mb-8">
+                  Experience a relaxing and hygienic atmosphere designed to make your dental visits stress-free and comfortable.
+                </p>
+                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-teal-50 group">
+                  <Image 
+                    src="/harini4.webp"
+                    alt="Harini Dental Care Reception"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  {/* Floating Badge */}
+                  <div className="absolute bottom-6 right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center space-x-4 z-20">
+                    <div className="bg-teal-100 p-3 rounded-full text-teal-600">
+                      <Heart className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <div className="font-black text-xl text-slate-800">10+ Years</div>
+                      <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Experience</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
@@ -330,6 +351,28 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Infrastructure Gallery Section */}
+        <section className="py-24 lg:py-32 bg-slate-900 text-white overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-teal-400 font-bold uppercase tracking-widest text-sm mb-4">State-of-the-Art Infrastructure</h2>
+              <h3 className="text-4xl md:text-5xl font-black mb-6">Our Advanced Clinic</h3>
+              <p className="text-xl text-slate-400">Experience dental care in a modern, hygienic, and relaxing environment.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden group shadow-lg">
+                <Image src="/harini3.webp" alt="Clinic Infrastructure 1" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+              </div>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden group shadow-lg">
+                <Image src="/harini5.webp" alt="Clinic Infrastructure 2" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+              </div>
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden group shadow-lg">
+                <Image src="/harini6.webp" alt="Clinic Infrastructure 3" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Why Choose Us Section */}
         <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal-200 to-transparent"></div>
@@ -375,28 +418,6 @@ export default function Home() {
                 <span className="text-green-500 font-bold text-xl">✓</span>
               </div>
               <span className="text-slate-700 font-bold text-lg">Accepts Google Pay & Digital Payments</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Clinic Gallery */}
-        <section className="py-24 lg:py-32 bg-slate-900 text-white overflow-hidden">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-teal-400 font-bold uppercase tracking-widest text-sm mb-4">State-of-the-Art Infrastructure</h2>
-              <h3 className="text-4xl md:text-5xl font-black mb-6">Our Clinic Gallery</h3>
-              <p className="text-xl text-slate-400">Experience dental care in a modern, hygienic, and relaxing environment.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              <div className="relative aspect-square md:aspect-auto md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Modern Clinic Interior" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
-              </div>
-              <div className="relative aspect-square md:aspect-auto md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=800&q=80" alt="Dental Chair" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
-              </div>
-              <div className="relative aspect-square md:aspect-auto md:h-80 rounded-3xl overflow-hidden group">
-                <Image src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Clean Hospital" fill className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
-              </div>
             </div>
           </div>
         </section>
