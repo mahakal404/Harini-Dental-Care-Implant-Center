@@ -334,17 +334,15 @@ export default function Home() {
               <h2 className="text-teal-600 font-bold uppercase tracking-widest text-sm mb-4">Real Results</h2>
               <h3 className="text-4xl md:text-5xl font-black text-slate-900">Transforming Smiles</h3>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-              <div className="bg-slate-50 rounded-3xl p-4 shadow-sm border border-slate-100 group">
-                <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
-                  <Image src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Teeth Whitening Before" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg">Before</div>
+            <div className="max-w-5xl mx-auto rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="relative aspect-square md:aspect-[4/3] group/before overflow-hidden">
+                  <Image src="/harini8.webp" alt="Before Treatment" fill className="object-cover group-hover/before:scale-105 transition-transform duration-700" />
+                  <div className="absolute top-6 left-6 bg-red-500/80 backdrop-blur-md text-white px-5 py-2 rounded-full text-sm font-bold tracking-widest uppercase shadow-xl z-10">Before Treatment</div>
                 </div>
-              </div>
-              <div className="bg-teal-50 rounded-3xl p-4 shadow-sm border border-teal-100 group">
-                <div className="relative aspect-video rounded-2xl overflow-hidden mb-4">
-                  <Image src="https://images.unsplash.com/photo-1590623354394-04141d65ab40?w=800&q=80" alt="Teeth Whitening After" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute top-4 right-4 bg-teal-600/90 backdrop-blur-sm text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase shadow-lg">After</div>
+                <div className="relative aspect-square md:aspect-[4/3] group/after overflow-hidden bg-slate-50">
+                  <Image src="/harini7.webp" alt="After Treatment" fill className="object-cover group-hover/after:scale-105 transition-transform duration-700" />
+                  <div className="absolute top-6 right-6 bg-teal-500/80 backdrop-blur-md text-white px-5 py-2 rounded-full text-sm font-bold tracking-widest uppercase shadow-xl z-10">After Treatment</div>
                 </div>
               </div>
             </div>
