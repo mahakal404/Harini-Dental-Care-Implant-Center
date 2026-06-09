@@ -61,6 +61,7 @@ export default function Home() {
   });
 
   const [hidden, setHidden] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -164,10 +165,34 @@ export default function Home() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-slate-800 hover:text-teal-600 transition">
+          <button 
+            className="md:hidden text-slate-800 hover:text-teal-600 transition"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             <Menu className="w-8 h-8" />
           </button>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0 top-full">
+            <nav className="flex flex-col p-4 font-semibold text-slate-600">
+              <Link href="#home" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-slate-50 hover:text-teal-600 transition">Home</Link>
+              <Link href="#services" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-slate-50 hover:text-teal-600 transition">Services</Link>
+              <Link href="#about" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-slate-50 hover:text-teal-600 transition">About Dr. Jinal</Link>
+              <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="py-3 border-b border-slate-50 hover:text-teal-600 transition">Contact</Link>
+              <div className="flex flex-col gap-3 mt-4">
+                <a href="tel:+919879364544" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center bg-teal-50 text-teal-700 border border-teal-100 px-5 py-2.5 rounded-full font-bold hover:bg-teal-100 transition-all">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Now
+                </a>
+                <a href="#booking-form" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center bg-teal-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-teal-700 transition-all">
+                  Book Appointment
+                </a>
+              </div>
+            </nav>
+          </div>
+        )}
       </motion.header>
 
       <main className="flex-grow">
@@ -212,6 +237,7 @@ export default function Home() {
                   src="/harini2.webp"
                   alt="Happy Patient at Harini Dental Care"
                   fill
+                  priority
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </motion.div>
